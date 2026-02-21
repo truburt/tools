@@ -24,7 +24,7 @@ chmod +x anti_quota.sh
 You can make it even easier to run from anywhere by adding an alias to your `~/.bash_aliases` (or `~/.bashrc`):
 
 ```bash
-alias aq='/home/truburt/dev/tools/anti_quota.sh'
+alias aq='~/truburt/tools/anti_quota.sh'
 ```
 
 Now you can simply type `aq` in your terminal to check your quota!
