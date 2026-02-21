@@ -36,6 +36,10 @@ Now you can simply type `aq` in your terminal to check your quota!
 | `-h` | `--help` | Show the help message and exit. |
 | `-j` | `--json`, `--raw` | Dump raw JSON response instead of the formatted summary. Formats using `jq` or `python3` if available. |
 
+### Antigravity AI Slash Command
+
+You can use the built-in AI workflow by typing `/quota` inside the Antigravity chat to automatically run the script and check your quota.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

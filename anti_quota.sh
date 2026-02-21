@@ -140,10 +140,21 @@ for PID in $PIDS; do
                             t = substr(arr[i], RSTART, RLENGTH)
                             match(t, /"resetTime":"[^"]+"/)
                             utc_time = substr(t, RSTART+13, RLENGTH-14)
-                            cmd = "date -d \"" utc_time "\" +\"%Y-%m-%d %H:%M:%S\""
-                            cmd | getline local_time
+                            cmd = "date -d \"" utc_time "\" +\"%Y-%m-%d %H:%M:%S|%s\""
+                            cmd | getline date_out
                             close(cmd)
-                            reset_str = " (Resets: " local_time ")"
+                            
+                            split(date_out, date_parts, "|")
+                            local_time = date_parts[1]
+                            reset_ts = date_parts[2]
+                            
+                            now_ts = systime()
+                            if (reset_ts > now_ts) {
+                                hours = (reset_ts - now_ts) / 3600.0
+                                reset_str = sprintf(" (Resets: %s, in %.1f hours)", local_time, hours)
+                            } else {
+                                reset_str = " (Resets: " local_time ")"
+                            }
                         }
                     }
                     print " - " name ": " color rem RESET reset_str
